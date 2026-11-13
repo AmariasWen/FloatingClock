@@ -2,6 +2,24 @@
 
 Windows 原生悬浮桌面时钟，使用 WPF / .NET 10，无第三方程序包。
 
+## 控件效果图
+
+以下图片由项目现有 WPF 界面渲染，时间、日期、城市和天气均为示例数据，不代表实时天气。
+
+### 基础时钟
+
+<img src="docs/images/clock.png" alt="浮光时钟：时间、日期和时区" width="340" />
+
+### 天气面板
+
+<img src="docs/images/clock-weather.png" alt="浮光时钟：城市天气和摄氏温度" width="340" />
+
+### 设置面板
+
+可选择时区、调节尺寸和不透明度，并设置天气城市。
+
+<img src="docs/images/settings.png" alt="设置面板：时区、尺寸、不透明度和天气城市" width="520" />
+
 ## 使用
 
 双击 `启动时钟.cmd` 或 `release/FloatingClock.exe`。需要 Windows 10/11 与 .NET 10 桌面运行时（当前电脑已具备）。发布目录中的文件请一并保留。
