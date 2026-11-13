@@ -1,0 +1,34 @@
+<Window x:Class="FloatingClock.SettingsWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="浮光时钟 · 设置" Width="520" SizeToContent="Height" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="#F5F7FA" FontFamily="Microsoft YaHei UI" FontSize="13" Topmost="True" ShowInTaskbar="False">
+  <StackPanel Margin="26,22">
+    <TextBlock Text="让时间，停在顺手的位置。" FontSize="20" FontWeight="SemiBold" Foreground="#17202C" Margin="0,0,0,20"/>
+    <TextBlock Text="显示时区" Margin="0,0,0,7"/>
+    <ComboBox x:Name="ZonePicker" Height="34" DisplayMemberPath="DisplayName" SelectedValuePath="Id" SelectionChanged="ZoneChanged" MaxDropDownHeight="320"/>
+    <CheckBox x:Name="SecondsCheck" Content="显示秒数（24小时制）" Margin="0,12,0,20" Click="OptionsChanged"/>
+    <DockPanel>
+      <TextBlock Text="时钟尺寸"/>
+      <TextBlock x:Name="ScaleLabel" HorizontalAlignment="Right"/>
+    </DockPanel>
+    <Slider x:Name="ScaleSlider" Minimum="60" Maximum="180" TickFrequency="10" SmallChange="5" LargeChange="10" Margin="0,10,0,4" ValueChanged="ScaleChanged" AutomationProperties.Name="时钟尺寸"/>
+    <TextBlock Text="整体等比例缩放 · 100% 为默认尺寸 · 实时预览并保存" Foreground="#637184" FontSize="11" Margin="0,0,0,20"/>
+    <DockPanel>
+      <TextBlock Text="不透明度"/>
+      <TextBlock x:Name="OpacityLabel" HorizontalAlignment="Right"/>
+    </DockPanel>
+    <Slider x:Name="OpacitySlider" Minimum="25" Maximum="100" TickFrequency="5" SmallChange="5" LargeChange="10" Margin="0,10,0,4" ValueChanged="OpacityChanged" AutomationProperties.Name="不透明度"/>
+    <TextBlock Text="向左更透明，向右更清晰 · 实时预览并保存" Foreground="#637184" FontSize="11" Margin="0,0,0,20"/>
+    <CheckBox x:Name="WeatherCheck" Content="显示天气与温度（°C）" Click="OptionsChanged"/>
+    <TextBlock Text="天气城市（独立于时区）" Margin="0,14,0,7"/>
+    <DockPanel>
+      <Button x:Name="SearchButton" Content="搜索" DockPanel.Dock="Right" Click="SearchCity" Margin="8,0,0,0"/>
+      <TextBox x:Name="CityQuery" Height="34" Padding="8,5" KeyDown="SearchKeyDown" ToolTip="输入城市中文名或英文名，如 深圳 / Shenzhen" AutomationProperties.Name="天气城市搜索"/>
+    </DockPanel>
+    <ComboBox x:Name="CityPicker" Margin="0,8,0,0" MinHeight="32" SelectionChanged="CityChanged" AutomationProperties.Name="城市搜索结果"/>
+    <TextBlock x:Name="SearchStatus" Foreground="#637184" TextWrapping="Wrap" FontSize="11" Margin="0,7,0,0" Text="输入城市名，搜索后选择对应城市。"/>
+    <TextBlock Foreground="#637184" FontSize="11" Margin="0,18,0,0" TextWrapping="Wrap">
+      <Run Text="天气："/><Hyperlink NavigateUri="https://open-meteo.com/" RequestNavigate="OpenWeatherSite">Open-Meteo</Hyperlink><Run Text=" · 地名：GeoNames。需联网，每15分钟更新。"/>
+    </TextBlock>
+    <TextBlock Text="左键拖动时钟可移动位置；右键打开菜单。设置自动保存。" FontSize="11" Foreground="#637184" Margin="0,8,0,14"/>
+    <Button Content="完成" HorizontalAlignment="Right" Width="90" Click="Done"/>
+  </StackPanel>
+</Window>
